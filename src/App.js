@@ -1,10 +1,20 @@
 import React from "react";
+import { Routes, Route } from "react-router-dom";
+import Layout from "./layouts/Layout";
+import PublicLayout from "./layouts/PublicLayout";
+import Home from "./pages/Home";
+import NotFound from "./pages/NotFound";
 
 const App = () => {
 	return (
-		<div>
-			<h1>Welcome {new Date().toDateString()}</h1>
-		</div>
+		<Routes>
+			<Route element={<Layout />}>
+				<Route element={<PublicLayout />}>
+					<Route path='/' element={<Home />} />
+					<Route path='*' element={<NotFound />} />
+				</Route>
+			</Route>
+		</Routes>
 	);
 };
 
